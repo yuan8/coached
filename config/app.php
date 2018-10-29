@@ -149,7 +149,6 @@ return [
 
         Weidner\Goutte\GoutteServiceProvider::class,
         // LaravelFCM\FCMServiceProvider::class,
-         // Benwilkins\FCM\FcmNotificationServiceProvider::class,
 
         Kawankoding\Fcm\FcmServiceProvider::class,
         Marprinhm\Midtrans\MidtransServiceProvider::class,

@@ -82,6 +82,5 @@ return array(
     'ColinODell\\Json5\\' => array($vendorDir . '/colinodell/json5/src'),
     'Cocur\\Slugify\\' => array($vendorDir . '/cocur/slugify/src'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
-    'Benwilkins\\FCM\\' => array($vendorDir . '/benwilkins/laravel-fcm-notification/src'),
     'App\\' => array($baseDir . '/app'),
 );

@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": "^7.1.3",
-        "benwilkins/laravel-fcm-notification": "dev-master",
         "brozot/laravel-fcm": "^1.2",
         "csanquer/pdo-service-provider": "~1.1dev",
         "cviebrock/eloquent-sluggable": "^4.5",

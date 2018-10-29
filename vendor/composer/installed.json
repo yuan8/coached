@@ -1,59 +1,5 @@
 [
     {
-        "name": "benwilkins/laravel-fcm-notification",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/benwilkins/laravel-fcm-notification.git",
-            "reference": "a184c3e21fb242c54816534e1b1a8a7032960506"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/benwilkins/laravel-fcm-notification/zipball/a184c3e21fb242c54816534e1b1a8a7032960506",
-            "reference": "a184c3e21fb242c54816534e1b1a8a7032960506",
-            "shasum": ""
-        },
-        "require": {
-            "guzzlehttp/guzzle": "^6.2",
-            "illuminate/config": "5.3.*|5.4.*|5.5.*|5.5.*|5.6.*|5.7.*",
-            "illuminate/notifications": "5.3.*|5.4.*|5.5.*|5.5.*|5.6.*|5.7.*",
-            "illuminate/queue": "5.3.*|5.4.*|5.5.*|5.5.*|5.6.*|5.7.*",
-            "illuminate/support": "5.3.*|5.4.*|5.5.*|5.5.*|5.6.*|5.7.*",
-            "php": ">=5.6.4"
-        },
-        "require-dev": {
-            "mockery/mockery": "~1.0",
-            "phpunit/phpunit": "~6.0"
-        },
-        "time": "2018-10-17T14:34:19+00:00",
-        "type": "library",
-        "extra": {
-            "laravel": {
-                "providers": [
-                    "Benwilkins\\FCM\\FcmNotificationServiceProvider"
-                ]
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Benwilkins\\FCM\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Ben Wilkins",
-                "email": "bentwilkins@gmail.com"
-            }
-        ],
-        "description": "Laravel FCM (Firebase Cloud Messaging) Notification Channel"
-    },
-    {
         "name": "brozot/laravel-fcm",
         "version": "v1.2.5",
         "version_normalized": "1.2.5.0",

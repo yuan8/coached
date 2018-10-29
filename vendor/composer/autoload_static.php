@@ -166,10 +166,6 @@ class ComposerStaticInit5119fb5d8ee5eb8075215dc2ba14a175
             'Cocur\\Slugify\\' => 14,
             'Carbon\\' => 7,
         ),
-        'B' => 
-        array (
-            'Benwilkins\\FCM\\' => 15,
-        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -483,10 +479,6 @@ class ComposerStaticInit5119fb5d8ee5eb8075215dc2ba14a175
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'Benwilkins\\FCM\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/benwilkins/laravel-fcm-notification/src',
-        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -533,6 +525,7 @@ class ComposerStaticInit5119fb5d8ee5eb8075215dc2ba14a175
     );
 
     public static $classMap = array (
+        'App\\CoachAvaible' => __DIR__ . '/../..' . '/app/CoachAvaible.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Country' => __DIR__ . '/../..' . '/app/Country.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -544,16 +537,19 @@ class ComposerStaticInit5119fb5d8ee5eb8075215dc2ba14a175
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\Ballcount' => __DIR__ . '/../..' . '/app/Http/Controllers/Ballcount.php',
         'App\\Http\\Controllers\\Ccoach' => __DIR__ . '/../..' . '/app/Http/Controllers/Ccoach.php',
         'App\\Http\\Controllers\\Cmanager' => __DIR__ . '/../..' . '/app/Http/Controllers/Cmanager.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Cstudent' => __DIR__ . '/../..' . '/app/Http/Controllers/Cstudent.php',
+        'App\\Http\\Controllers\\DargonBall' => __DIR__ . '/../..' . '/app/Http/Controllers/DargonBall.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\MIDMiddlewareCan' => __DIR__ . '/../..' . '/app/Http/Controllers/MIDMiddlewareCan.php',
         'App\\Http\\Controllers\\MID\\MiddlewareCan' => __DIR__ . '/../..' . '/app/Http/Controllers/MID/MiddlewareCan.php',
         'App\\Http\\Controllers\\MYCT' => __DIR__ . '/../..' . '/app/Http/Controllers/MYCT.php',
         'App\\Http\\Controllers\\PostCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostCategoryController.php',
         'App\\Http\\Controllers\\SnapController' => __DIR__ . '/../..' . '/app/Http/Controllers/SnapController.php',
+        'App\\Http\\Controllers\\TestC' => __DIR__ . '/../..' . '/app/Http/Controllers/TestC.php',
         'App\\Http\\Controllers\\TransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransactionController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\VtdirectController' => __DIR__ . '/../..' . '/app/Http/Controllers/VtdirectController.php',
@@ -589,9 +585,6 @@ class ComposerStaticInit5119fb5d8ee5eb8075215dc2ba14a175
         'App\\Veritrans\\Midtrans' => __DIR__ . '/../..' . '/app/Veritrans/Midtrans.php',
         'App\\Veritrans\\Veritrans' => __DIR__ . '/../..' . '/app/Veritrans/Veritrans.php',
         'App\\ViewRangeCoachPrice' => __DIR__ . '/../..' . '/app/ViewRangeCoachPrice.php',
-        'Benwilkins\\FCM\\FcmChannel' => __DIR__ . '/..' . '/benwilkins/laravel-fcm-notification/src/FcmChannel.php',
-        'Benwilkins\\FCM\\FcmMessage' => __DIR__ . '/..' . '/benwilkins/laravel-fcm-notification/src/FcmMessage.php',
-        'Benwilkins\\FCM\\FcmNotificationServiceProvider' => __DIR__ . '/..' . '/benwilkins/laravel-fcm-notification/src/FcmNotificationServiceProvider.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
