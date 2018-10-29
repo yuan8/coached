@@ -8,7 +8,7 @@ use App\Http\Controllers\Cmanager as ControllerWebFinal;
 use Validator;
 use Auth;
 use App\PostCategory;
-use App\Userlanguage;
+use App\UserLanguage;
 
 use App\PostArticle;
 // use Midtrans;
