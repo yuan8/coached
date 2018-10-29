@@ -18,8 +18,8 @@ class AvailablityCouch extends Migration
         Schema::create('coach_availabilities',function(Blueprint $table){
             $table->bigIncrements('id')->index();
             $table->integer('day_code');
-            $table->dateTime('start');
-            $table->dateTime('end');
+            $table->time('start');
+            $table->time('end');
             $table->bigInteger('coach_id')->unsigned();
             $table->timestamps();
             $table->foreign('coach_id')
