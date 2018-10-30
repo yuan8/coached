@@ -157,11 +157,8 @@ class Ccoach extends ControllerStudent
         	'category_id'=>$request->category_id,
         	'status'=>1,
         	'featured_images'=>$featured_images
-
         ]);
-
         return redirect()->route('db.c.post_article');
-
 	}
 
 

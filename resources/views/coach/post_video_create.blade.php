@@ -18,8 +18,11 @@
 			</div>
 			 	<div class="card-body">
 			 		<div class="row">
+			 			<div class="col-md-12" id="place_video_init">
+			 				
+			 			</div>
 			 			<div class="col-md-12">
-			 				<input type="text" name="url_video" class="form-control"  placeholder="Paste url" required="">
+			 				<input type="text" name="url_video" id="url_video" onchange="post_video_init(this,'#place_video_init')" class="form-control"  placeholder="Paste url" required="">
 			 			</div>
 			 		</div>
 			 	</div>

@@ -12,9 +12,9 @@ class PostArticle extends Model
 
 	use Sluggable;
 
-    protected $table='article_posts';
+    protected $table='posts';
 
-    protected $fillable=['title','content','status','user_id','category_id','publish_date','featured_images'];
+    protected $fillable=['title','content','status','user_id','category_id','publish_date','featured_images','type','featured_video'];
 
     public function rel_from_category(){
         return $this->belongsTo(PostCategory::class,'category_id');

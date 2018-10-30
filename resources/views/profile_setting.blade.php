@@ -5,14 +5,74 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.js"></script>
 <!-- <script type="text/javascript">$.fn.cropper.noConflict();</script> -->
 @stop
+@section('script')
+<script type="text/javascript" src="{{asset('js/video_render_init_coach.js?v=').time()}}"></script>
+<script type="text/javascript">
+    function changevideo(dom,target){
+        if(dom.value!=''){
+           var embed= video_init_embed_from_url(dom.value);
+           if(embed){
+             $(target).html(embed);
+           }else{
+            $('#video_feature').val('');
+             $(target).html('');
+
+
+        }
+        }else{
+            $('#video_feature').val('');
+            $(target).html('');  
+        }
+    }
+
+    if($('#video_link').html()!=undefined){
+        $('#video_link').trigger('change');
+    }
+
+
+</script>
+
+
+<script type="text/javascript">
+    function searchStates(dom,target){
+        var val=dom.value;
+
+        api_coach.get('/search-state/'+val).then(response => {
+            var data=response.data;
+            var res='';
+            if(data.code==200){
+                console.log(data.data);
+                for(var i in data.data){
+                    res+='<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>';
+                } 
+                $(target).html(res); 
+                $(target).trigger("chosen:updated");
+            }   
+
+        }).catch(error => {
+        console.log(error);
+        });
+    }
+
+
+
+</script>
+
+
+
+<script type="text/javascript">
+    Sortable.create(document.getElementById('container-expertise'));
+</script>
+
+
+@stop
+
 
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        @include('partials.banner_user')
-
-        <div class="col-md-12">
+             @include('partials.banner_user')
             <div class="card">
                 <form action="{{route('a.update_my_profile')}}" method="post">
                     @csrf
@@ -69,7 +129,6 @@
                                                 <option value="{{$tz->tz}}" {{Auth::User()->timezone==$tz->tz?'selected':''}}>{{$tz->name}}</option>
                                             @endforeach
 
-                                            
                                         </select>
                                        <span class="invalid-feedback" role="alert">
                                                 @if ($errors->has('timezone'))
@@ -165,34 +224,34 @@
                 </div>
             </form>
             </div>
-        </div>
-
-        <div class="col-md-12">
+            @can('be.coached')
             <div class="card">
                 <div class="card-header">
-                    <h4>Discribe about you to interest student</h4>
-                    <ul class="nav nav-tabs btn-group row" style="margin-top:20px;">
-                        <li class=" col-md-6 "><a data-toggle="tab" class="btn btn-default btn-sm col-md-12 active show" href="#home">Description</a></li>
-                        <li class="col-md-6"><a data-toggle="tab" href="#menu1" class="btn btn-default btn-sm col-md-12 "  >Video Opener</a></li>
+                    <h5>Discribe about you to interest student</h5>
+                    <ul class="nav nav-tabs  " style="margin-top:20px;">
+                        <li  class=" active"><a data-toggle="tab" href="#home">Description</a></li>
+                        <li class=" "><a data-toggle="tab" href="#menu1"   >Video Opener</a></li>
                       </ul>
                 </div>
                 <div class="card-body">
 
                           <div class="tab-content">
-                            <div id="home" class="tab-pane fade in active show">
+                            <div id="home" class="tab-pane fade in active">
                               <p>Fill decription about you</p>
                               <textarea class="form-control" max="5"></textarea>
                             </div>
                             <div id="menu1" class="tab-pane fade">
-                                <div class="row">
-                                    <div class="col-md-12">
+                                <div class="col-md-12" id="video_place">
                                         
-                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Past URL video</label>
-                                        <input type="" class="form-control" name="">
+                                        <div class="input-group">
+                                        <input type="text" class="form-control"  id="video_link" onchange="changevideo(this,'#video_place')">
+                                        <span class="input-group-btn"><button class="btn btn-primary" onclick="$('#video_link').trigger('change')">Generate</button></span>
+                                        <input type="hidden" name="video_feature" id="video_feature" required="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -203,10 +262,9 @@
                         <button class="btn btn-warning btn-sm">Update</button>
                 </div>
             </div>
-        </div>
+            @endcan
 
 
-         <div class="col-md-12">
             <div class="card">
                 <form action="{{route('a.update_my_language')}}" method="post">
                     @csrf
@@ -223,7 +281,6 @@
                         <label class="label label-primary">{{$lg->parent_language->name}}</label>
                     @endforeach
                    
-
                     <br>
                 </div>
                 <div class="card-body">
@@ -250,10 +307,8 @@
                 </form>
 
             </div>
-        </div>
 
         @can('be.coached')
-        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">Expertise</h5>
@@ -286,10 +341,9 @@
                     </div>
                 </div>
                  <div class="card-footer">
-                    <button class="btn wallet_promo_btn pull-right">Update</button>
+                    <button class="btn btn-warning">Update</button>
                 </div>
             </div>
-        </div>
         @endcan
 
     </div>
@@ -298,40 +352,4 @@
 @stop
 
 
-@section('script')
-
-<script type="text/javascript">
-    function searchStates(dom,target){
-        var val=dom.value;
-
-        api_coach.get('/search-state/'+val).then(response => {
-            var data=response.data;
-            var res='';
-            if(data.code==200){
-                console.log(data.data);
-                for(var i in data.data){
-                    res+='<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>';
-                } 
-                $(target).html(res); 
-                $(target).trigger("chosen:updated");
-            }   
-
-        }).catch(error => {
-        console.log(error);
-        });
-    }
-
-
-
-</script>
-
-
-
-<script type="text/javascript">
-
-    Sortable.create(document.getElementById('container-expertise'));
-</script>
-
-
-@stop
 

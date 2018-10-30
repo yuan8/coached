@@ -19,6 +19,7 @@ class CoachRangePrice extends Migration
             CREATE VIEW view_coach_range_prices 
             AS
             SELECT
+            
                c.coach_id as coach_id, max(c.price) as max_price, min(c.price) as min_price
             FROM
                 users as u

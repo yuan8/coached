@@ -62,7 +62,7 @@
                     </div> -->
                 </div>
                 <div class="table-data__tool-right">
-                    <a class="btn-primary" href="{{route('db.c.post_video.create')}}">
+                    <a class="btn btn-primary" href="{{route('db.c.post_video.create')}}">
                         <i class="zmdi zmdi-plus"></i> NEW</a>
                 </div>
             </div>

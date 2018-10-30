@@ -20,16 +20,13 @@ class PostComent extends Migration
             $table->longText('content');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('post_id')->unsigned();
-
             $table->longText('images')->comment('json type');
             $table->timestamps();
             $table->softDeletes();
-            
             $table->foreign('user_id')
             ->references('id')->on('users');
-
              $table->foreign('post_id')
-            ->references('id')->on('article_posts')->onDelete('cascade');
+            ->references('id')->on('posts')->onDelete('cascade');
         
         });
     }

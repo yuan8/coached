@@ -1,6 +1,14 @@
 @extends('layouts.app_db_student')
 
 @section('content')
+@section('script')
+<script type="text/javascript" src="{{asset('js/coach_editor.js?v=').time()}}"></script>
+<script type="text/javascript">
+	$('#lfm').filemanager('image');
+</script>
+
+
+@stop
 
 <section class="content-header">
       <h4>
@@ -10,35 +18,33 @@
 </section>
 <div class="container-fluid">
 	<div class="card">
-			<div class="card-header">
-				<h3 class="title">Upload Futured Image</h3>
-			</div>
-			 	<div class="card-body">
-			 		<div class="row">
-			 			<div class="col-md-12">
-			 				<img id="holder" style="margin-top:15px;height: auto; width:100%;">
-			 				
-			 			</div>
-			 		</div>
-			 	</div>
-			 	<div class="card-footer">
-				   <span class="input-group-btn" class="col-md-12">
-				     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-info" style="color:#fff">
-				       <i class="fa fa-picture-o"></i> Choose Image
-				     </a>
-				   </span>
-				    <span class="invalid-feedback" role="alert">
-               			@if ($errors->has('featured_images'))
-                       		 <strong>{{ $errors->first('featured_images') }}</strong>
-                		@endif
-                    </span>
-			 	</div>
-			 </div>
+	<div class="card-header">
+		<h3 class="title">Upload Futured Image</h3>
+	</div>
+	 	<div class="card-body">
+	 		<div class="row">
+	 			<div class="col-md-12">
+	 				<img id="holder" style="margin-top:15px;height: auto; width:100%;">
+	 				
+	 			</div>
+	 		</div>
+	 	</div>
+	 	<div class="card-footer">
+		   <span class="input-group-btn" class="col-md-12">
+		     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-info" style="color:#fff">
+		       <i class="fa fa-picture-o"></i> Choose Image
+		     </a>
+		   </span>
+		    <span class="invalid-feedback" role="alert">
+       			@if ($errors->has('featured_images'))
+               		 <strong>{{ $errors->first('featured_images') }}</strong>
+        		@endif
+            </span>
+	 	</div>
+	 </div>
 </div>
 
-<script type="text/javascript">
-	$('#lfm').filemanager('image');
-</script>
+
 
 <div class="container-fluid">
 	<div class="card">
@@ -81,7 +87,8 @@
 					<div class="col-md-12">
 						<div class="form-group">
 							<label>Content</label>
-							<textarea id="article-ckeditor" name="content" required=""></textarea>
+							<textarea id="coach-editor-plugin" style="z-index:999;" name="content" required=""></textarea>
+
 							<span class="invalid-feedback" role="alert">
 	                   			@if ($errors->has('content'))
 	                           		 <strong>{{ $errors->first('content') }}</strong>
@@ -92,7 +99,7 @@
 				</div>
 			</div>
 			<div class="card-footer">
-                    <button type="submit" class="btn wallet_promo_btn pull-right">Create</button>
+                    <button type="submit" class="btn btn-warning">Create</button>
             </div>
 		</form>
 	</div>

@@ -12,13 +12,20 @@
     <title>Coached Inc Dashboard</title>
     <!-- Fontfaces CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('/vendors/chosen/chosen.min.css')}}">
-
     <link href="{{asset('asset_db_student/css/font-face.css')}}" rel="stylesheet" media="all" />
     <link href="{{asset('asset_db_student/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all" />
     <link href="{{asset('asset_db_student/vendor/font-awesome-5/css/fontawesome-all.min.css')}}" rel="stylesheet" media="all" />
     <link href="{{asset('asset_db_student/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all" />
     <!-- Bootstrap CSS-->
-    <link href="{{asset('asset_db_student/vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all" />
+      <!--  <link rel="stylesheet" type="text/css" href="{{asset('asset_db_student/vendor/bootstrap-4.1/bootstrap.min.css')}}"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+
+
     <!-- Vendor CSS-->
     <link href="{{asset('asset_db_student/vendor/animsition/animsition.min.css')}}" rel="stylesheet" media="all" />
     <link href="{{asset('asset_db_student/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet" media="all" />
@@ -32,9 +39,10 @@
     <link href="{{asset('asset_db_student/css/style.css')}}" rel="stylesheet" media="all" />
     <link href="{{asset('asset_db_student/css/custome.css?v='.time())}}" rel="stylesheet" media="all">
     <script src="{{asset('asset_db_student/vendor/jquery-3.2.1.min.js')}}"></script>
-
-
     <script type="text/javascript" src="{{asset('/vendor/laravel-filemanager/js/lfm.js?d=').time()}}"></script>
+    <!-- <link href="https://summernote.org/vendors/summernote/dist/summernote-bs4.css" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+
 
     
     <!-- <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase.js"></script> -->
@@ -43,7 +51,6 @@
    
     <script>
         const root_def="{{url('')}}"
-      // Initialize Firebase
      
     </script>
 
@@ -203,7 +210,12 @@
             <!-- Jquery JS-->
             <!-- Bootstrap JS-->
             <script src="{{asset('asset_db_student/vendor/bootstrap-4.1/popper.min.js')}}"></script>
-            <script src="{{asset('asset_db_student/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
+            <!-- <script src="{{asset('asset_db_student/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script> -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            <!-- <script type="text/javascript" src="https://summernote.org/vendors/summernote/dist/summernote-bs4.js"></script> -->
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
+
             <!-- Vendor JS-->
             <script src="{{asset('asset_db_student/vendor/slick/slick.min.js')}}"></script>
             <script src="{{asset('asset_db_student/vendor/wow/wow.min.js')}}"></script>
@@ -217,17 +229,17 @@
             <script src="{{asset('vendors/axios/dist/axios.min.js')}}"></script>
             <script src="{{asset('asset_db_student/vendor/select2/select2.min.js')}}"></script>
             <script type="text/javascript" src="{{asset('/vendors/chosen/chosen.jquery.js')}}"></script>
-            <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-            <script src="{{asset('/vendor/unisharp/laravel-ckeditor/config.js?v='.time())}}"></script>
+            <!-- <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script> -->
+            <!-- <script src="{{asset('/vendor/unisharp/laravel-ckeditor/config.js?v='.time())}}"></script> -->
 
-            <script>
+           <!--  <script>
                 setTimeout(function(){
                     if(document.getElementById('article-ckeditor')!=undefined){
                         CKEDITOR.replace( 'article-ckeditor' );
                     }
                 },100);
                 
-            </script>
+            </script> -->
             <!-- Main JS-->
             <script src="{{asset('asset_db_student/js/main.js?v2')}}"></script>
 
@@ -237,10 +249,16 @@
 
             
            
-             <script type="text/javascript">
-                 $(".chosen-select").chosen({no_results_text: "Oops, nothing found!"}); 
-            </script>
+            
             @yield('script')
+            <script type="text/javascript">
+                $(function(){
+                        if($(".chosen-select")[0]!=undefined){
+                            $(".chosen-select").chosen({no_results_text: "Oops, nothing found!"}); 
+                        }
+
+                });
+            </script>
 
             <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
             <script>
@@ -323,7 +341,6 @@
               console.log('Message received. ', payload);
               console.log('from w');
               new Notification('ss',{title:'test',icon:'https://www.freeiconspng.com/uploads/flat-blue-home-icon-4.png',badge:'https://www.freeiconspng.com/uploads/flat-blue-home-icon-4.png'});
-
               // return self.registration.showNotification(payload.data);
               // ...
             });

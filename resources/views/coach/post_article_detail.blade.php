@@ -1,7 +1,14 @@
 @extends('layouts.app_db_student')
 
 @section('content')
+@section('script')
+<script type="text/javascript" src="{{asset('js/coach_editor.js?v=').time()}}"></script>
 
+<script type="text/javascript">
+	
+	$('#lfm').filemanager('image');
+</script>
+@stop
 <section class="content-header">
       <h4>
         EDIT ARTICLE 
@@ -29,8 +36,8 @@
 		 		</div>
 		 	</div>
 		 	<div class="card-footer">
-			   <span class="input-group-btn" class="col-md-12">
-			     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-info" style="color:#fff">
+			   <span  class="">
+			     	<a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-info" style="color:#fff">
 			       <i class="fa fa-picture-o"></i> Choose Image
 			     </a>
 			   </span>
@@ -43,9 +50,6 @@
 		 </div>
 </div>
 
-<script type="text/javascript">
-	$('#lfm').filemanager('image');
-</script>
 
 <div class="container-fluid">
 	<div class="card">
@@ -88,7 +92,7 @@
 					<div class="col-md-12">
 						<div class="form-group">
 							<label>Content</label>
-							<textarea id="article-ckeditor" name="content" required="">{{$post->content}}</textarea>
+							<textarea id="coach-editor-plugin" name="content" required="">{{$post->content}}</textarea>
 							<span class="invalid-feedback" role="alert">
 	                   			@if ($errors->has('content'))
 	                           		 <strong>{{ $errors->first('content') }}</strong>
