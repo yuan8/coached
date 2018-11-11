@@ -10,7 +10,7 @@ use App\User;
 use Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\CoachDetail;
 class CustomeAuthController extends Controller
 {
     /**
@@ -84,6 +84,11 @@ class CustomeAuthController extends Controller
                 }else if(Auth::user()->can('be.student')){
                     return redirect()->route('db.s.index');
                 }else if(Auth::user()->can('be.coached')){
+
+                    if(!Auth::user()->R_coach_coach_detail){
+                        CoachDetail::create(['coach_id'=>Auth::user()->id]);
+                    }
+
                     return redirect()->route('db.c.index');
                 }else{
                     return redirect()->route('p.index');

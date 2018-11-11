@@ -28,13 +28,13 @@ function video_init_embed_from_url(url){
       video_created = $('<iframe>')
           .attr('frameborder', 0)
           .attr('src', '//www.youtube.com/embed/' + youtubeId)
-          .attr('width', '640').attr('height', '360');
+          .attr('style', 'width:100%; min-width:450px; height:auto; min-height:360px;');
   }
   else if (igMatch && igMatch[0].length) {
       video_created = $('<iframe>')
           .attr('frameborder', 0)
           .attr('src', 'https://instagram.com/p/' + igMatch[1] + '/embed/')
-          .attr('width', '612').attr('height', '710')
+          .attr('style', 'width:100%; min-width:450px; height:auto; min-height:360px;')
           .attr('scrolling', 'no')
           .attr('allowtransparency', 'true');
   }
@@ -42,40 +42,38 @@ function video_init_embed_from_url(url){
       video_created = $('<iframe>')
           .attr('frameborder', 0)
           .attr('src', vMatch[0] + '/embed/simple')
-          .attr('width', '600').attr('height', '600')
+          .attr('style', 'width:100%; min-width:450px; height:auto; min-height:360px;')
           .attr('class', 'vine-embed');
   }
   else if (vimMatch && vimMatch[3].length) {
       video_created = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>')
           .attr('frameborder', 0)
           .attr('src', '//player.vimeo.com/video/' + vimMatch[3])
-          .attr('width', '640').attr('height', '360');
+          .attr('style', 'width:100%; min-width:450px; height:auto; min-height:360px;');
   }
   else if (dmMatch && dmMatch[2].length) {
       video_created = $('<iframe>')
           .attr('frameborder', 0)
           .attr('src', '//www.dailymotion.com/embed/video/' + dmMatch[2])
-          .attr('width', '640').attr('height', '360');
+          .attr('style', 'width:100%; min-width:450px; height:auto; min-height:360px;');
   }
   else if (youkuMatch && youkuMatch[1].length) {
       video_created = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>')
           .attr('frameborder', 0)
           .attr('height', '498')
-          .attr('width', '510')
-          .attr('src', '//player.youku.com/embed/' + youkuMatch[1]);
+          .attr('style', 'width:100%; min-width:450px; height:auto; min-height:360px;').attr('src', '//player.youku.com/embed/' + youkuMatch[1]);
   }
   else if ((qqMatch && qqMatch[1].length) || (qqMatch2 && qqMatch2[2].length)) {
       var vid = ((qqMatch && qqMatch[1].length) ? qqMatch[1] : qqMatch2[2]);
       video_created = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>')
           .attr('frameborder', 0)
           .attr('height', '310')
-          .attr('width', '500')
-          .attr('src', 'http://v.qq.com/iframe/player.html?vid=' + vid + '&amp;auto=0');
+          .attr('style', 'width:100%; min-width:450px; height:auto; min-height:360px;').attr('src', 'http://v.qq.com/iframe/player.html?vid=' + vid + '&amp;auto=0');
   }
   else if (mp4Match || oggMatch || webmMatch) {
       video_created = $('<video controls>')
           .attr('src', url)
-          .attr('width', '640').attr('height', '360');
+          .attr('style', 'width:100%; min-width:450px; height:auto; min-height:360px;');
   }
   else {
       // this is not a known video link. Now what, Cat? Now what?

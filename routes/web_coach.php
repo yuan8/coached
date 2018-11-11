@@ -12,16 +12,20 @@ Route::prefix('c/dashboard')->middleware(['auth:web','can:be.coached'])->group(f
 
 Route::prefix('c/dashboard')->middleware(['auth:web','can:ac.dashboard','can:be.coached'])->group(function(){
 	Route::get('/',['uses'=>'WebControllController@get_db_c_index','as'=>'db.c.index']);
+	Route::put('/settings/init',['uses'=>'WebControllController@get_db_s_change_init','as'=>'db.c.change.detail.init']);
+
 	Route::get('/post-article',['uses'=>'WebControllController@get_db_c_post_article','as'=>'db.c.post_article']);
-
-	Route::get('/post-article/show/{id}',['uses'=>'WebControllController@get_db_c_post_article_show','as'=>'db.c.post_article.detail']);
-
 	Route::post('/post-article',['uses'=>'WebControllController@db_c_post_article_store','as'=>'db.c.post_article.store']);
 	Route::get('/post-article/create',['uses'=>'WebControllController@get_db_c_post_article_create','as'=>'db.c.post_article.create']);
+	Route::get('/post-article/show/{id}',['uses'=>'WebControllController@get_db_c_post_article_show','as'=>'db.c.post_article.detail']);
+	Route::put('/post-article/update/{id}',['uses'=>'WebControllController@db_c_post_article_update','as'=>'db.c.post_article.update']);
+	Route::delete('/post-article/delete/{id}',['uses'=>'WebControllController@get_db_c_post_article_delete','as'=>'db.c.post_article.delete']);
 
 
 	Route::get('/post-video',['uses'=>'WebControllController@get_db_c_post_video','as'=>'db.c.post_video']);
 	Route::get('/post-video/create',['uses'=>'WebControllController@get_db_c_post_video_create','as'=>'db.c.post_video.create']);
+	Route::post('/post-video/',['uses'=>'WebControllController@db_c_post_video_store','as'=>'db.c.post_video.store']);
+
 
 	Route::get('/price',['uses'=>'WebControllController@get_db_c_price','as'=>'db.c.price']);
 	Route::post('/price',['uses'=>'WebControllController@get_db_c_price_store','as'=>'db.c.price.store']);

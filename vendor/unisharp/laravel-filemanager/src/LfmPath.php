@@ -246,9 +246,9 @@ class LfmPath
             throw new \Exception('File failed to upload. Error code: ' . $file->getError());
         }
 
-        $new_file_name = $this->getNewName($file) . '.' . $file->getClientOriginalExtension();
+        $new_file_name = $this->getNewName($file);
 
-        if ($this->setName($new_file_name)->exists()) {
+        if ($this->setName($new_file_name)->exists() && !config('lfm.over_write_on_duplicate')) {
             return $this->error('file-exist');
         }
 
@@ -311,9 +311,10 @@ class LfmPath
         $this->setName(null)->thumb(true)->createFolder();
 
         // generate cropped image content
-        $image_path = $this->setName($file_name)->thumb(true)->path('absolute');
+        $this->setName($file_name)->thumb(true);
         $image = Image::make($original_image->get())
-            ->fit(config('lfm.thumb_img_width', 200), config('lfm.thumb_img_height', 200))
-            ->save($image_path);
+            ->fit(config('lfm.thumb_img_width', 200), config('lfm.thumb_img_height', 200));
+
+        $this->storage->put($image->stream()->detach());
     }
 }

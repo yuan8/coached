@@ -319,3 +319,26 @@ blockquote p {
     border-bottom: 0;
     border-left: .3em solid transparent;
 }*/
+
+.icon-share{
+  width:20px;
+  transition: width 0.5s;
+
+}
+.icon-share.twitter:hover{
+  width:60px;
+  transition: width  0.5s;
+   content: url('./../../asset_local/twitter-c.png');
+}
+
+.icon-share.facebook:hover{
+  width:60px;
+  transition: width  0.5s;
+   content: url('./../../asset_local/facebook-c.png');
+}
+
+.icon-share.whatsapp:hover{
+  width:60px;
+  transition: width  0.5s;
+   content: url('./../../asset_local/whatsapp-c.png');
+}

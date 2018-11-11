@@ -14,7 +14,7 @@ var LFMButton = function(context) {
         contents: '<i class="note-icon-picture"></i>',
         tooltip: 'Insert image with filemanager',
         click: function() {
-            lfmPath({type: 'image', prefix: root_def+'/p/filemanager'}, function(url, path) {
+            lfmPath({type: 'file', prefix: root_def+'/p/filemanager'}, function(url, path) {
                 context.invoke('insertImage', url[0].url);
             });
         }
@@ -37,7 +37,7 @@ $('#coach-editor-plugin').summernote({
             ['misc', ['codeview','fontname','clear']]
         ],
         codemirror: { 
-         // theme: 'monokai'
+         theme: 'monokai'
        },
         buttons: {
             lfmd: LFMButton,

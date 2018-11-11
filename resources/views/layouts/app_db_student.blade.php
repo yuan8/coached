@@ -215,7 +215,6 @@
             <!-- <script type="text/javascript" src="https://summernote.org/vendors/summernote/dist/summernote-bs4.js"></script> -->
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
-
             <!-- Vendor JS-->
             <script src="{{asset('asset_db_student/vendor/slick/slick.min.js')}}"></script>
             <script src="{{asset('asset_db_student/vendor/wow/wow.min.js')}}"></script>
@@ -229,21 +228,13 @@
             <script src="{{asset('vendors/axios/dist/axios.min.js')}}"></script>
             <script src="{{asset('asset_db_student/vendor/select2/select2.min.js')}}"></script>
             <script type="text/javascript" src="{{asset('/vendors/chosen/chosen.jquery.js')}}"></script>
-            <!-- <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script> -->
-            <!-- <script src="{{asset('/vendor/unisharp/laravel-ckeditor/config.js?v='.time())}}"></script> -->
-
-           <!--  <script>
-                setTimeout(function(){
-                    if(document.getElementById('article-ckeditor')!=undefined){
-                        CKEDITOR.replace( 'article-ckeditor' );
-                    }
-                },100);
-                
-            </script> -->
+         
             <!-- Main JS-->
             <script src="{{asset('asset_db_student/js/main.js?v2')}}"></script>
 
             <script src="{{route('api_access_init').'?v='.time()}}"></script>
+            <script src="{{asset('js/video_render_init_coach.js').'?v='.time()}}"></script>
+
 
             <!-- end document-->
 
@@ -332,7 +323,7 @@
                 console.log(refreshedToken);
                 // ...
               }).catch(function(err) {
-                console.log('Unable to retrieve refreshed token ', err);
+                  console.log('Unable to retrieve refreshed token ', err);
                 showToken('Unable to retrieve refreshed token ', err);
               });
             });

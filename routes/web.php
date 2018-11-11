@@ -10,8 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+	use App\PostArticle;
 	Route::get('/vtweb', 'MYCT@vtweb');
+	Route::get('/test-post', function(){
+		dd(PostArticle::where('status',1)->update(['status'=>2]));
+	});
+
 
 	Route::get('/vtdirect', 'MYCT@vtdirect');
 	Route::post('/vtdirect', 'MYCT@checkout_process');
@@ -25,7 +29,7 @@
 	Route::get('/snaptoken', 'MYCT@token');
 	Route::post('/snapfinish', 'MYCT@finish');
 
-
+	Route::get('shared/external/post/{id}/{slug?}',['uses'=>'WebControllController@public_post','as'=>'p_share_post']);
 
 	Route::get('/n',function(){
 		$tt=fcm()

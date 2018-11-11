@@ -23,7 +23,12 @@ return [
     'url_prefix' => 'p/filemanager',
 
     // Use relative paths (without domain)
-    'relative_paths' => true,
+    'relative_paths' => false,
+
+    // behavior on files with identical name
+    // setting it to true cause old file replace with new one
+    // setting it to false show `error-file-exist` error and stop upload
+    'over_write_on_duplicate' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +57,6 @@ return [
 
     'thumb_folder_name'  => 'thumbs',
 
-
     'folder_categories'  => [
         'file' => [
             'folder_name'  => 'files',
@@ -75,9 +79,9 @@ return [
                 'image/pjpeg',
                 'image/png',
                 'image/gif',
-                'image/svg+xml',
-                'application/pdf',
-                'text/plain',
+                // 'image/svg+xml',
+                // 'application/pdf',
+                // 'text/plain',
             ],
         ],
     ],
@@ -90,11 +94,11 @@ return [
 
     'disk' => 'public',
 
-    'rename_file' => true,
+    'rename_file' => false,
 
-    'alphanumeric_filename'  => false,
+    'alphanumeric_filename'  => true,
 
-    'alphanumeric_directory' => false,
+    'alphanumeric_directory' => true,
 
     'should_validate_size'   => true,
 

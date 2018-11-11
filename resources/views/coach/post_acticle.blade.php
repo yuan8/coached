@@ -77,7 +77,6 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-
                         <div class="table-responsive table-data">
                     <table class="table">
                         <thead>
@@ -96,11 +95,8 @@
                              @foreach($posts as $post)
                             <tr class="text-center">
                                 <td class=" " >
-                                <?php
-                                    $f_i=$post->featured_images!='[]'?json_decode($post->featured_images):null;
-                                ?>
-                                @isset($f_i[0])
-                                <img src="{{asset($f_i[0]->url)}}" style="width: 60px;">
+                                @isset($post->featured_images)
+                                <img src="{{asset($post->featured_images)}}" style="width: 60px;">
                                 @endisset
                                 </td>
                                 <td>

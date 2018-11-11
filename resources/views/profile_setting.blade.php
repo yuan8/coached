@@ -12,13 +12,14 @@
         if(dom.value!=''){
            var embed= video_init_embed_from_url(dom.value);
            if(embed){
+             $('#video_feature').val(dom.value);
              $(target).html(embed);
            }else{
             $('#video_feature').val('');
-             $(target).html('');
+            $(target).html('');
 
 
-        }
+              }
         }else{
             $('#video_feature').val('');
             $(target).html('');  
@@ -226,41 +227,45 @@
             </div>
             @can('be.coached')
             <div class="card">
-                <div class="card-header">
-                    <h5>Discribe about you to interest student</h5>
-                    <ul class="nav nav-tabs  " style="margin-top:20px;">
-                        <li  class=" active"><a data-toggle="tab" href="#home">Description</a></li>
-                        <li class=" "><a data-toggle="tab" href="#menu1"   >Video Opener</a></li>
-                      </ul>
-                </div>
-                <div class="card-body">
+                <form action="{{route('db.c.change.detail.init')}}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <div class="card-header">
+                        <h5>Discribe about you to interest student</h5>
+                        <ul class="nav nav-tabs  " style="margin-top:20px;">
+                            <li  class=" active"><a data-toggle="tab" href="#home">Description</a></li>
+                            <li class=" "><a data-toggle="tab" href="#menu1"   >Video Opener</a></li>
+                          </ul>
+                    </div>
+                    <div class="card-body">
 
-                          <div class="tab-content">
-                            <div id="home" class="tab-pane fade in active">
-                              <p>Fill decription about you</p>
-                              <textarea class="form-control" max="5"></textarea>
-                            </div>
-                            <div id="menu1" class="tab-pane fade">
-                                <div class="col-md-12" id="video_place">
-                                        
+                              <div class="tab-content">
+                                <div id="home" class="tab-pane fade in active">
+                                  <p>Fill decription about you</p>
+                                  <textarea class="form-control" name="description" max="5">{{Auth::user()->R_coach_coach_detail?Auth::user()->R_coach_coach_detail->description:''}}</textarea>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Past URL video</label>
-                                        <div class="input-group">
-                                        <input type="text" class="form-control"  id="video_link" onchange="changevideo(this,'#video_place')">
-                                        <span class="input-group-btn"><button class="btn btn-primary" onclick="$('#video_link').trigger('change')">Generate</button></span>
-                                        <input type="hidden" name="video_feature" id="video_feature" required="">
+                                <div id="menu1" class="tab-pane fade">
+                                    <div class="col-md-12" id="video_place">
+                                            
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Past URL video</label>
+                                            <div class="input-group">
+                                            <input type="text" class="form-control"  id="video_link" onchange="changevideo(this,'#video_place')" value="{{Auth::user()->R_coach_coach_detail?Auth::user()->R_coach_coach_detail->opener_video:''}}">
+                                            <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#video_link').trigger('change')">Generate</button></span>
+                                            <input type="hidden" name="opener_video" id="video_feature" required="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                          </div>
-                </div>
-                <div class="card-footer">
-                        <button class="btn btn-warning btn-sm">Update</button>
-                </div>
+                              </div>
+                    </div>
+                    <div class="card-footer">
+                            <button class="btn btn-warning btn-sm">Update</button>
+                    </div>
+                </form>
             </div>
             @endcan
 

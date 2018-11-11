@@ -7,12 +7,17 @@
 @stop
 
 @section('content')
-<section class="content-header">
-      <h1>
-        Category {{$category->name}}
-        <small>{{Auth::User()->timezone}}</small>
-      </h1>
-</section>
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap text-center">
+            <h2 class="title-1 ">Category {{$category->name}} <small>{{Auth::User()->timezone}}</small></h2>
+
+            <!-- <button class="au-btn au-btn-icon au-btn--blue">
+                <i class="zmdi zmdi-plus"></i>add item</button> -->
+        </div>
+    </div>
+</div>
+
 
 <?php
 
@@ -36,7 +41,6 @@ foreach ($posts as $key => $post) {
 
 ?>
 
-<div class="container-fluid">
     <div class="row">
     		<div class="col-md-4">
     		@foreach($post_1 as $post)
@@ -54,19 +58,18 @@ foreach ($posts as $key => $post) {
 							</div>
 						</div>
 					</div>
-					<?php
-				        $f_i=$post->featured_images!='[]'?json_decode($post->featured_images):null;
-				    ?>
+				
 				    <a href="{{route('a.db.post',['id'=>$post->id,'slug'=>$post->slug])}}" style="position: relative;">
+				    	@if($post->type==1)
 				    	<i class="fa fa-play-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="" data-original-title="Video Content" style="position: absolute;top:10px; background: #eee; border-radius: 100%; left:10px; font-size: 70px;"></i>
-				    @isset($f_i[0])
-				    	<img class="card-img-top" src="{{asset($f_i[0]->url)}}" >
+				    	@endif
+				      @isset($post->featured_images)
+				    	<img class="card-img-top" src="{{asset($post->featured_images)}}" >
 				    @endisset
 				    </a>
 				    <div class="card-body">
 				        <h4 class="card-title mb-3">{{strlen($post->title) > 50 ? substr($post->title,0,50)."..." : $post->title}}</h4>
-				        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-				            content.
+				        <p class="card-text">{{MP::plain_content_text($post->content,200)}}
 				        </p>
 				    </div>
 				    <div class="card-footer">
@@ -96,19 +99,18 @@ foreach ($posts as $key => $post) {
 							</div>
 						</div>
 					</div>
-					<?php
-				        $f_i=$post->featured_images!='[]'?json_decode($post->featured_images):null;
-				    ?>
+					
 				    <a href="{{route('a.db.post',['id'=>$post->id,'slug'=>$post->slug])}}" style="position: relative;">
+				    	@if($post->type==1)
 				    	<i class="fa fa-play-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="" data-original-title="Video Content" style="position: absolute;top:10px; background: #eee; border-radius: 100%; left:10px; font-size: 70px;"></i>
-				    @isset($f_i[0])
-				    	<img class="card-img-top" src="{{asset($f_i[0]->url)}}" >
+				    	@endif
+				    @isset($post->featured_images)
+				    	<img class="card-img-top" src="{{asset($post->featured_images)}}" >
 				    @endisset
 				    </a>
 				    <div class="card-body">
 				        <h4 class="card-title mb-3">{{strlen($post->title) > 50 ? substr($post->title,0,50)."..." : $post->title}}</h4>
-				        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-				            content.
+				        <p class="card-text">{{MP::plain_content_text($post->content,200)}}
 				        </p>
 				    </div>
 				    <div class="card-footer">
@@ -140,19 +142,18 @@ foreach ($posts as $key => $post) {
 							</div>
 						</div>
 					</div>
-					<?php
-				        $f_i=$post->featured_images!='[]'?json_decode($post->featured_images):null;
-				    ?>
+					
 				    <a href="{{route('a.db.post',['id'=>$post->id,'slug'=>$post->slug])}}" style="position: relative;">
+				    	@if($post->type==1)
 				    	<i class="fa fa-play-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="" data-original-title="Video Content" style="position: absolute;top:10px; background: #eee; border-radius: 100%; left:10px; font-size: 70px;"></i>
-				    @isset($f_i[0])
-				    	<img class="card-img-top" src="{{asset($f_i[0]->url)}}" >
+				    	@endif
+				    @isset($post->featured_images)
+				    	<img class="card-img-top" src="{{asset($post->featured_images)}}" >
 				    @endisset
 				    </a>
 				    <div class="card-body">
 				        <h4 class="card-title mb-3">{{strlen($post->title) > 50 ? substr($post->title,0,50)."..." : $post->title}}</h4>
-				        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-				            content.
+				        <p class="card-text">{{MP::plain_content_text($post->content,200)}}
 				        </p>
 				    </div>
 				    <div class="card-footer">
@@ -167,7 +168,6 @@ foreach ($posts as $key => $post) {
 	            
         	</div>
     </div>
-</div>
 @stop
 
 

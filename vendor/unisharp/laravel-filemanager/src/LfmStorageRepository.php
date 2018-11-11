@@ -3,6 +3,7 @@
 namespace UniSharp\LaravelFilemanager;
 
 use Illuminate\Support\Facades\Storage;
+use League\Flysystem\Cached\CachedAdapter;
 
 class LfmStorageRepository implements RepositoryContract
 {
@@ -25,8 +26,13 @@ class LfmStorageRepository implements RepositoryContract
 
     public function rootPath()
     {
-        // storage_path('app')
-        return $this->disk->getDriver()->getAdapter()->getPathPrefix();
+        $adapter = $this->disk->getDriver()->getAdapter();
+
+        if ($adapter instanceof CachedAdapter) {
+            $adapter = $adapter->getAdapter();
+        }
+
+        return $adapter->getPathPrefix();
     }
 
     public function move($new_lfm_path)
@@ -36,10 +42,10 @@ class LfmStorageRepository implements RepositoryContract
 
     public function save($file)
     {
-	    $nameint = strripos($this->path, "/");
-	    $nameclean = substr($this->path, $nameint + 1);
-	    $pathclean = substr_replace($this->path, "", $nameint);
-	    $this->disk->putFileAs($pathclean, $file, $nameclean, 'public');
+        $nameint = strripos($this->path, "/");
+        $nameclean = substr($this->path, $nameint + 1);
+        $pathclean = substr_replace($this->path, "", $nameint);
+        $this->disk->putFileAs($pathclean, $file, $nameclean, 'public');
     }
 
     public function url($path)

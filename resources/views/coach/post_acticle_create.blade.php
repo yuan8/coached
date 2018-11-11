@@ -4,7 +4,34 @@
 @section('script')
 <script type="text/javascript" src="{{asset('js/coach_editor.js?v=').time()}}"></script>
 <script type="text/javascript">
-	$('#lfm').filemanager('image');
+	
+
+	 $.fn.extend({
+		yone: function(contex) {			
+			return this.each(function(k,d) {
+				// d.addEventListener('click',function(){
+				// 	$(d).find('input[type=file]')[0].click();
+				// });
+				// var tgr_b=$(d).find('input[type=file]')[0];
+					if(contex=='image-sigle'){
+						// var f=$(ev.target)[0];
+					this.addEventListener("change", function(ev){
+
+						var t=$(ev.target).attr('target-render');
+						var reader = new FileReader();
+						console.log($(ev.target)[0]);
+							reader.readAsDataURL($(ev.target)[0].files[0]);
+							reader.onload = function(e) {
+								$(t).attr('src',this.result);
+							}
+					});
+				}
+    		});
+		}});
+
+
+		$('#image-featured').yone('image-sigle');
+		
 </script>
 
 
@@ -16,7 +43,8 @@
         <small>{{Auth::User()->timezone}}</small>
       </h4>
 </section>
-<div class="container-fluid">
+<form action="{{route('db.c.post_article.store')}}" method="post" enctype='multipart/form-data' >
+	@csrf
 	<div class="card">
 	<div class="card-header">
 		<h3 class="title">Upload Futured Image</h3>
@@ -24,15 +52,15 @@
 	 	<div class="card-body">
 	 		<div class="row">
 	 			<div class="col-md-12">
-	 				<img id="holder" style="margin-top:15px;height: auto; width:100%;">
-	 				
+	 				<img id="thumb" style="margin-top:15px;height: auto; width:200px;">
 	 			</div>
 	 		</div>
 	 	</div>
 	 	<div class="card-footer">
-		   <span class="input-group-btn" class="col-md-12">
-		     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-info" style="color:#fff">
+		   <span class="" class="col-md-12">
+		     <a   class="btn btn-info" style="color:#fff" onclick="$('#image-featured')[0].click()">
 		       <i class="fa fa-picture-o"></i> Choose Image
+			   <input type="file"  id="image-featured" name="featured_images" target-render="#thumb" accept="image/*" style="display:none;">
 		     </a>
 		   </span>
 		    <span class="invalid-feedback" role="alert">
@@ -42,15 +70,10 @@
             </span>
 	 	</div>
 	 </div>
-</div>
 
-
-
-<div class="container-fluid">
 	<div class="card">
-		<form action="{{route('db.c.post_article.store')}}" method="post">
-			@csrf
-			<input id="thumbnail" class="form-control" type="hidden" style="" name="featured_images[]"  required="">
+		
+			<!-- <input id="thumbnail" class="form-control" type="hidden" style="" "  required=""> -->
 			  
 			<div class="card-header">
 				<div class="row no-padding-row">
@@ -101,8 +124,7 @@
 			<div class="card-footer">
                     <button type="submit" class="btn btn-warning">Create</button>
             </div>
-		</form>
-	</div>
-</div>
+		</div>
+</form>
 
 @stop

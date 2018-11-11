@@ -21,8 +21,8 @@ class PostArticle extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
             $table->tinyInteger('status')->dafault(0)->comment('1=draf,2=publish,3=reject');
-            $table->longText('featured_images')->comment('array json type');
-            $table->longText('featured_video')->comment('json type');
+            $table->longText('featured_images');
+            $table->longText('featured_video')->nullable();
             $table->dateTime('publish_date')->nullable();
             $table->boolean('type')->default(0)->comment('0 = article 1 = video');
             $table->string('slug')->nullable();

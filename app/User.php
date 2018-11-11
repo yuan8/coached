@@ -9,6 +9,7 @@ use App\Country;
 use App\UserLanguage;
 use App\ViewRangeCoachPrice;
 use App\CoachAvaible;
+use App\CoachDetail;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -57,6 +58,30 @@ class User extends Authenticatable
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // coach relational
+
     public function R_coach_range_price(){
         return $this->hasOne(ViewRangeCoachPrice::class,'coach_id');
     }
@@ -67,6 +92,11 @@ class User extends Authenticatable
 
      public function R_coach_coach_avaible_view(){
         return $this->hasMany(CoachAvaible::class,'coach_id')->orderBy('id','DESC')->select(['day_code as dow','start','end']);
+    }
+
+
+    public function R_coach_coach_detail(){
+        return $this->hasOne(CoachDetail::class,'coach_id');
     }
 
 

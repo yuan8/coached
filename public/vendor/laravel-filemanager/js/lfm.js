@@ -4,20 +4,14 @@
     type = type || 'file';
 
     this.on('click', function(e) {
-      var route_prefix = (options && options.prefix) ? options.prefix : root_def+'/p/filemanager';
+      var route_prefix = (options && options.prefix) ? options.prefix : '/laravel-filemanager';
       localStorage.setItem('target_input', $(this).data('input'));
       localStorage.setItem('target_preview', $(this).data('preview'));
       window.open(route_prefix + '?type=' + type, 'FileManager', 'width=900,height=600');
       window.SetUrl = function (url, file_path) {
           //set the value of the desired input to image url
-          url=url[0].url;
           var target_input = $('#' + localStorage.getItem('target_input'));
-          target_input.val(url).trigger('change');
-
-          console.log(url);
-          console.log('ddd------------ddd');
-          console.log(file_path);
-
+          target_input.val(file_path).trigger('change');
 
           //set or change the preview image src
           var target_preview = $('#' + localStorage.getItem('target_preview'));
